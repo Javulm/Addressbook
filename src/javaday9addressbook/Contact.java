@@ -1,6 +1,6 @@
 package javaday9addressbook;
 
-public class Contact {
+class Contact {
     String firstName, lastName, email;
 
     public void setFirstName(String firstName) {
