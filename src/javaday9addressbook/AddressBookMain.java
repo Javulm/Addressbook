@@ -42,6 +42,12 @@ public class AddressBookMain {
 			operate.editContact(contact);
 		}
 		operate.showContact(contact);
+        System.out.print("\nDo you want to delete? press Y / N : ");
+        char deleteOption = sc.next().charAt(0);
+        if (deleteOption == 'Y') {
+            contact = operate.deleteContact(contact);
+        }
+        operate.showContact(contact);
 		sc.close();
 	}
 }
