@@ -1,6 +1,6 @@
 package javaday9addressbook;
 
-public class AddressBook extends Contact {
+class AddressBook extends Contact {
 	String address, city, state;
 	int zip;
 	long phoneNo;
