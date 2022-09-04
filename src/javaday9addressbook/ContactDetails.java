@@ -1,7 +1,12 @@
 package javaday9addressbook;
 
 class ContactDetails {
-    private String firstName, lastName, address,  city, state,email , zip, phoneNo;
+    private String firstName, lastName, address,  city, state,email ;
+    int zip;
+    long phoneNo;
+
+    public ContactDetails(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String email) {
+    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -27,22 +32,6 @@ class ContactDetails {
         return email;
     }
 
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -65,6 +54,22 @@ class ContactDetails {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public long getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setPhoneNo(long phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     @Override
