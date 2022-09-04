@@ -5,11 +5,15 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 class AddressBookSystem {
-	ArrayList<ContactDetails> contactDetailsList = new ArrayList<>();
+//	create ArrayList object to store the contact details.
+	static ArrayList<ContactDetails> contactDetailsList = new ArrayList<>();
+//	create hashmap object to store all arraylist contacts as address book with unique name.
 	static HashMap<String, ArrayList<ContactDetails>> contactMap = new HashMap<>();
 	static AddressBookSystem details= new AddressBookSystem();
 
+//	 method to add contact details in the addressbook.
 	public void addContactDetails(){
+//		object of Contact details Class.
 		ContactDetails contact = new ContactDetails();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the First Name of person:");
@@ -31,9 +35,11 @@ class AddressBookSystem {
 		contactDetailsList.add(contact);
 		System.out.println(contact);
 	}
+//	method to show all contact details in the addressbook.
 	public void display(){
 		System.out.println(contactDetailsList);
 	}
+//	method to edit contact details in the addressbook.
 	public void editContact() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the First name to update Contact details : ");
@@ -97,6 +103,29 @@ class AddressBookSystem {
 			}
 		}
 	}
+	public void duplicateCheck() {
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println("Enter first name");
+		String firstName= sc1.next();
+		/*
+		 * for loop is used check the condition if condition is true
+		 * then element at the specified position in this list in contactDetailsList all store in contactName
+		 */
+		for (int k = 0; k < contactDetailsList.size(); k++) {
+			String contactName = contactDetailsList.get(k).getFirstName();
+			/*
+			 * if 1st name in address book is present equal to firstname in contactName
+			 * then print this person is already present otherwise
+			 */
+			if (firstName.equals(contactName)) {
+				System.out.println("This Person is Already Present");
+			} else {
+				System.out.println("You can Add this Person");
+				addContactDetails();
+				break;
+			}
+		}
+	}
 	public void createAddressBook() {
 		Scanner sc = new Scanner(System.in);
 		while (true) {
@@ -126,7 +155,7 @@ class AddressBookSystem {
 						}
 						switch (choose) {
 							case 1:
-								details.addContactDetails();
+								details.duplicateCheck();
 								break;
 							case 2:
 								details.editContact();
@@ -161,7 +190,7 @@ class AddressBookSystem {
 							}
 							switch (choose) {
 								case 1:
-									details.addContactDetails();
+									details.duplicateCheck();
 									break;
 								case 2:
 									details.editContact();
