@@ -15,7 +15,7 @@ public class AddressBookMain {
 
         while (true) {
             System.out.println("\nWelcome to Address Book System");
-            System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. Viewcontact data \n6. Count contacts \n7.Exit");
+            System.out.println("1. New Address Book \n2. Select Address Book \n3. Delete Address Book \n4. Search Contact Data \n5. Viewcontact data \n6. Count contacts \n7. Sort contacts \n8. Exit");
             System.out.print("Enter Your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -74,6 +74,9 @@ public class AddressBookMain {
                     addressBook.countByOption();
                     break;
                 case 7:
+                    System.out.println("Welcome to the sorting data alphabetically");
+                    addressBook.sortByOption();
+                case 8:
                     sc.close();// for closing the program
                     return;
                 default:

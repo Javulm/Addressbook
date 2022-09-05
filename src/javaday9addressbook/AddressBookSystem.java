@@ -1,6 +1,7 @@
 package javaday9addressbook;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 class AddressBookSystem {
@@ -17,6 +18,9 @@ class AddressBookSystem {
 	 * store the State of person in this object
 	 */
 	public static Map<String, ContactDetails> stateHashMap = new HashMap<String, ContactDetails>();
+	static Scanner sc = new Scanner(System.in);
+	static AddressBookSystem addressBook = new AddressBookSystem();
+
 	/*
 	 * create a method name as addContact,this is parameterized method
 	 * this method is boolean type that means their output is true or false
@@ -67,10 +71,7 @@ class AddressBookSystem {
 		return contactDetailsList.stream().filter(person -> person.getState().equalsIgnoreCase(state))
 				.collect(Collectors.toList());
 	}
-//	method to show all contact details in the addressbook.
-	public void display(){
-		System.out.println(contactDetailsList);
-	}
+
 	/*
 	 * Method to view person
 	 * @param nameHashMap
@@ -86,6 +87,10 @@ class AddressBookSystem {
 	public static void viewByState(Map<String, ContactDetails> stateHashMap) {
 		stateHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
 	}
+	public static List<ContactDetails> sortBy(Function<? super ContactDetails, ? extends String> key) {
+		return contactDetailsList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
+	}
+
 	/*
 	 * create a method name as editContact this is parameterized method
 	 * @param current details.
@@ -352,6 +357,35 @@ public boolean editContact(ContactDetails current, ContactDetails edit) {
 				return;
 			default:
 				System.out.println("Invalid Option");
+		}
+	}
+	public void sortByOption() {
+		System.out.println("1. By first name");
+		System.out.println("2. By last name");
+		System.out.println("3. By city");
+		System.out.println("4. By state");
+		System.out.println("5. By zip");
+		System.out.println("6. Back");
+		System.out.print("Your choice: ");
+		int choice = sc.nextInt();
+		sc.nextLine();
+		switch (choice) {
+			case 1:
+				AddressBookSystem.sortBy(ContactDetails::getFirstName).forEach(System.out::println);
+				break;
+			case 2:
+				AddressBookSystem.sortBy(ContactDetails::getLastName).forEach(System.out::println);
+				break;
+			case 3:
+				AddressBookSystem.sortBy(ContactDetails::getCity).forEach(System.out::println);
+				break;
+			case 4:
+				AddressBookSystem.sortBy(ContactDetails::getState).forEach(System.out::println);
+				break;
+			case 5:
+				return;
+			default:
+				System.out.println("INVALID CHOICE!");
 		}
 	}
 }
