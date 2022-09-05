@@ -90,6 +90,12 @@ class AddressBookSystem {
 	public static List<ContactDetails> sortBy(Function<? super ContactDetails, ? extends String> key) {
 		return contactDetailsList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
 	}
+	public static List<ContactDetails> sortByZip(Function<? super ContactDetails, ? extends Integer> key) {
+		return contactDetailsList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
+	}
+	public static List<ContactDetails> sortByName(Function<? super ContactDetails, ? extends String> key) {
+		return contactDetailsList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
+	}
 
 	/*
 	 * create a method name as editContact this is parameterized method
@@ -371,7 +377,7 @@ public boolean editContact(ContactDetails current, ContactDetails edit) {
 		sc.nextLine();
 		switch (choice) {
 			case 1:
-				AddressBookSystem.sortBy(ContactDetails::getFirstName).forEach(System.out::println);
+				AddressBookSystem.sortByName(ContactDetails::getFirstName).forEach(System.out::println);
 				break;
 			case 2:
 				AddressBookSystem.sortBy(ContactDetails::getLastName).forEach(System.out::println);
@@ -383,6 +389,7 @@ public boolean editContact(ContactDetails current, ContactDetails edit) {
 				AddressBookSystem.sortBy(ContactDetails::getState).forEach(System.out::println);
 				break;
 			case 5:
+				AddressBookSystem.sortByZip(ContactDetails::getZip).forEach(System.out::println);
 				return;
 			default:
 				System.out.println("INVALID CHOICE!");

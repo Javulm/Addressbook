@@ -2,7 +2,7 @@ package javaday9addressbook;
 
 class ContactDetails {
     private String firstName, lastName, address,  city, state,email ;
-    int zip;
+    Integer zip;
     long phoneNo;
 
     public ContactDetails(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String email) {
