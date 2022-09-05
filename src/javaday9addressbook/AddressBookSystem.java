@@ -1,14 +1,22 @@
 package javaday9addressbook;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 class AddressBookSystem {
 //	create ArrayList object to store the contact details.
 	static ArrayList<ContactDetails> contactDetailsList = new ArrayList<>();
-
+	public static Map<String, ContactDetails> nameHashMap = new HashMap<String, ContactDetails>();
+	/*
+	 * create object for map,object name is nameHashMap
+	 * store the city of person in this object
+	 */
+	public static Map<String, ContactDetails> cityHashMap = new HashMap<String, ContactDetails>();
+	/*
+	 * create object for map,object name is StateHashMap
+	 * store the State of person in this object
+	 */
+	public static Map<String, ContactDetails> stateHashMap = new HashMap<String, ContactDetails>();
 	/*
 	 * create a method name as addContact,this is parameterized method
 	 * this method is boolean type that means their output is true or false
@@ -63,7 +71,26 @@ class AddressBookSystem {
 	public void display(){
 		System.out.println(contactDetailsList);
 	}
-//	method to edit contact details in the addressbook.
+	/*
+	 * Method to view person
+	 * @param nameHashMap
+	 */
+	public static void viewByName(Map<String, ContactDetails> nameHashMap) {
+		nameHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
+	}
+
+	public static void viewByCity(Map<String, ContactDetails> cityHashMap) {
+		cityHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
+	}
+
+	public static void viewByState(Map<String, ContactDetails> stateHashMap) {
+		stateHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "=" + e.getValue().toString()));
+	}
+	/*
+	 * create a method name as editContact this is parameterized method
+	 * @param current details.
+	 * @return editing new data
+	 */
 public boolean editContact(ContactDetails current, ContactDetails edit) {
 	if (!contactDetailsList.contains(current))
 		return false;
@@ -266,6 +293,31 @@ public boolean editContact(ContactDetails current, ContactDetails edit) {
 				System.out.println("Enter state: ");
 				String state = sc.nextLine();
 				contactDetailsList.forEach(book -> searchByState(state).forEach(System.out::println));
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println("INVALID CHOICE!");
+		}
+	}
+	public void viewByOption(Map<String, AddressBookSystem> addressBookMap) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("1. View By name");
+		System.out.println("2. View By city");
+		System.out.println("3. View By state");
+		System.out.println("4. Back");
+		System.out.print("Enter Your choice: ");
+		int choice = sc.nextInt();
+		sc.nextLine();
+		switch (choice) {
+			case 1:
+				viewByName(nameHashMap);
+				break;
+			case 2:
+				viewByCity(cityHashMap);
+				break;
+			case 3:
+				viewByState(stateHashMap);
 				break;
 			case 4:
 				return;
