@@ -48,7 +48,7 @@ class AddressBookSystem {
         return -1;
     }
 
-    public static List<Contacts> addContact(List<Contacts> contactList) {
+    public static List<Contacts> addContact() {
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Enter First Name to add contact:");
         String firstName = sc1.next();
@@ -79,7 +79,7 @@ class AddressBookSystem {
         return contactList;
     }
 
-    public static void editContact(List<Contacts> contactList) {
+    public static void editContact() {
         System.out.println("Enter the First name to update Contact details : ");
         String editName = sc.next();
         for (int i = 0; i < contactList.size(); i++) {
@@ -129,7 +129,7 @@ class AddressBookSystem {
         }
     }
 
-    public static void deleteContact(List<Contacts> contactList) {
+    public static void deleteContact() {
         System.out.println("Confirm the first name of the person to delete the contact");
         String name2 = sc.next();
         int list2 = isNamePresent(name2, contactList);
@@ -141,7 +141,7 @@ class AddressBookSystem {
         }
     }
 
-    public static void showContact(List<Contacts> contactList) {
+    public static void showContact() {
         System.out.println("Confirm the first name of the person to display the contact");
         String name3 = sc.next();
         int list2 = isNamePresent(name3, contactList);
@@ -170,17 +170,16 @@ class AddressBookSystem {
                 int choice = sc1.nextInt();
                 switch (choice) {
                     case 1:
-                        List<Contacts> multipleContacts = addContact(contactList);
-                        addressBooks.put(bookName, multipleContacts);
+                        addressBooks.put(bookName, contactList);
                         break;
                     case 2:
-                        AddressBookSystem.editContact(contactList);
+                        AddressBookSystem.editContact();
                         break;
                     case 3:
-                        AddressBookSystem.deleteContact(contactList);
+                        AddressBookSystem.deleteContact();
                         break;
                     case 4:
-                        AddressBookSystem.showContact(contactList);
+                        AddressBookSystem.showContact();
                         break;
                     case 5:
                         return;
@@ -208,18 +207,18 @@ class AddressBookSystem {
                 int choice = sc.nextInt();
                 switch (choice) {
                     case 1:
-                        List<Contacts> multipleContacts = addContact(contactList);
+                        List<Contacts> multipleContacts = addContact();
                         addressBooks.put(bookName, multipleContacts);
 
                         break;
                     case 2:
-                        AddressBookSystem.editContact(contactList);
+                        AddressBookSystem.editContact();
                         break;
                     case 3:
-                        AddressBookSystem.deleteContact(contactList);
+                        AddressBookSystem.deleteContact();
                         break;
                     case 4:
-                        AddressBookSystem.showContact(contactList);
+                        AddressBookSystem.showContact();
                         break;
                     case 5:
                         return;
