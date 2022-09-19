@@ -1,11 +1,20 @@
 package javaday9addressbook;
 
-class Contacts {
-    private String firstName, lastName, address,  city, state,email ;
-    Integer zip;
+class Contact {
+    private String firstName, lastName, address,  city, state;
+    private int zip;
+    private String email;
     long phoneNo;
 
-    public Contacts(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String email) {
+    public Contact(String firstName, String lastName, String address, String city, String state, int zip, String email, long phoneNo) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.email = email;
+        this.phoneNo = phoneNo;
     }
 
     public void setFirstName(String firstName) {
@@ -74,7 +83,7 @@ class Contacts {
 
     @Override
     public String toString() {
-        return "Contacts{" +
+        return "Contact{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
