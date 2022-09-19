@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class AddressBookFileIO {
-    public static String ADDRESS_BOOK_PATH = "addressBook.txt";
+    public static String ADDRESS_BOOK_PATH = "C:\\Users\\javul\\Desktop\\classwork\\javaday9addressbook\\src\\addressBook.txt";
 
 
     public static void readFromFile() throws IOException {
